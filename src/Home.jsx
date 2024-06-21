@@ -46,7 +46,7 @@ const Home = () => {
             intensity={1}
           />
 
-          <Sky position={[-200, 0, 0]} />
+          <Sky position={[-200, 0, 0]} isRotating={isRotating} />
           <Plane
             position={[0, 1, -1]}
             rotation={[0.3, Math.PI / 2.6, 0.4]}
@@ -57,6 +57,7 @@ const Home = () => {
             position={[-2, -5, -40]}
             scale={[0.14, 0.11, 0.11]}
             rotation={[Math.PI / 2 + 0.2, Math.PI, 0]}
+            isRotating={isRotating}
           />
         </Suspense>
       </Canvas>

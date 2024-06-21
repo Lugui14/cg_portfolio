@@ -40,6 +40,9 @@ const Navbar = () => {
           rounded={16}
           as={Button}
           rightIcon={<ChevronDownIcon />}
+          display={"flex"}
+          justifyContent={"center"}
+          alignItems={"center"}
         >
           <Text fontSize={"xl"} fontWeight={"bold"} className="logo-text">
             MENU
