@@ -5,16 +5,13 @@ import {
   CloseButton,
   Heading,
 } from "@chakra-ui/react";
+import { useState } from "react";
 
-const Popup = ({ title, children, display, setDisplay }) => {
+const Popup = ({ title, children, ...props }) => {
+  const [display, setDisplay] = useState(true);
+
   return (
-    <Card
-      zIndex={display ? 9999 : 0}
-      position={"absolute"}
-      top={300}
-      right={120}
-      minW={"30%"}
-    >
+    <Card zIndex={display ? 9999 : 0} {...props}>
       <CardHeader
         display={"flex"}
         justifyContent={"space-between"}
@@ -30,7 +27,6 @@ const Popup = ({ title, children, display, setDisplay }) => {
       <CardBody>{children}</CardBody>
     </Card>
   );
-  PopoverCloseButton;
 };
 
 export default Popup;

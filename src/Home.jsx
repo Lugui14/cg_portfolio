@@ -1,11 +1,11 @@
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import Island from "./models/Island";
 import { Html } from "@react-three/drei";
 import Sky from "./models/Sky";
 import Plane from "./models/Plane";
-import Popup from "./components/Popup";
+import AboutPopup from "./components/AboutPopup";
 
 const Loading = () => (
   <Html>
@@ -13,9 +13,17 @@ const Loading = () => (
   </Html>
 );
 
+const popups = {
+  about: <AboutPopup />,
+};
+
 const Home = () => {
   const [isRotating, setIsRotating] = useState(false);
-  const [displayPopup, setDisplayPopup] = useState(true);
+  const [displayPopup, setDisplayPopup] = useState(null);
+
+  useEffect(() => {
+    console.log(displayPopup);
+  }, [displayPopup]);
 
   window.onkeydown = (e) => {
     if (e.key === "ArrowRight") {
@@ -31,13 +39,8 @@ const Home = () => {
 
   return (
     <section style={{ position: "relative", width: "100vw", height: "100vh" }}>
-      <Popup
-        title={"Welcome to the Island"}
-        display={displayPopup}
-        setDisplay={setDisplayPopup}
-      >
-        Teste
-      </Popup>
+      {popups[displayPopup]}
+
       <Canvas
         style={{
           width: "100vw",

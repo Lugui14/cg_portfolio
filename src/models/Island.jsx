@@ -6,13 +6,21 @@ import { useRef } from "react";
 import islandScene from "../assets/island.glb";
 import { useFrame } from "@react-three/fiber";
 
-export default function Island(props) {
+export default function Island({ setDisplayPopup, ...props }) {
   const islandRef = useRef();
   const { nodes, materials } = useGLTF(islandScene);
 
   useFrame(() => {
     if (props.isRotating) {
       islandRef.current.rotation.y -= 0.01;
+
+      if (islandRef.current.rotation.y <= -Math.PI * 2) {
+        islandRef.current.rotation.y = 0;
+      }
+    }
+
+    if (islandRef.current.rotation.y >= -(Math.PI / 4)) {
+      setDisplayPopup("about");
     }
   });
 
@@ -59,7 +67,7 @@ export default function Island(props) {
           castShadow
           receiveShadow
           geometry={nodes.Object_8.geometry}
-          material={materials['base_island_additional_pipes_BEAM.001']}
+          material={materials["base_island_additional_pipes_BEAM.001"]}
         />
         <mesh
           castShadow
