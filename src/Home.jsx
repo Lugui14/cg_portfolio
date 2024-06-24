@@ -6,6 +6,9 @@ import { Html } from "@react-three/drei";
 import Sky from "./models/Sky";
 import Plane from "./models/Plane";
 import AboutPopup from "./components/AboutPopup";
+import ProjetctsPopup from "./components/ProjetctsPopup";
+import TechnologiesPopup from "./components/TechnologiesPopup";
+import ContactPopup from "./components/ContactPopup";
 
 const Loading = () => (
   <Html>
@@ -15,6 +18,9 @@ const Loading = () => (
 
 const popups = {
   about: <AboutPopup />,
+  projects: <ProjetctsPopup />,
+  technologies: <TechnologiesPopup />,
+  contact: <ContactPopup />,
 };
 
 const Home = () => {

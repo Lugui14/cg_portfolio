@@ -19,8 +19,20 @@ export default function Island({ setDisplayPopup, ...props }) {
       }
     }
 
-    if (islandRef.current.rotation.y >= -(Math.PI / 4)) {
+    if (islandRef.current.rotation.y >= -(Math.PI / 2)) {
       setDisplayPopup("about");
+    } else if (
+      islandRef.current.rotation.y <= -(Math.PI / 2) &&
+      islandRef.current.rotation.y >= -Math.PI
+    ) {
+      setDisplayPopup("projects");
+    } else if (
+      islandRef.current.rotation.y <= -Math.PI &&
+      islandRef.current.rotation.y >= -3 * ((2 * Math.PI) / 4)
+    ) {
+      setDisplayPopup("technologies");
+    } else {
+      setDisplayPopup("contact");
     }
   });
 
