@@ -5,10 +5,14 @@ import {
   CloseButton,
   Heading,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Popup = ({ title, children, ...props }) => {
   const [display, setDisplay] = useState(true);
+
+  useEffect(() => {
+    setDisplay(true);
+  }, [title]);
 
   return (
     <Card zIndex={display ? 9999 : 0} {...props}>

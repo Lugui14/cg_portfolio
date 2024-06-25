@@ -1,18 +1,24 @@
 /* eslint-disable react/no-unknown-property */
 import { useGLTF } from "@react-three/drei";
 import { a } from "@react-spring/three";
-import { useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 
 import islandScene from "../assets/island.glb";
 import { useFrame } from "@react-three/fiber";
+import { MenuContext } from "../contexts/MenuContext";
 
 export default function Island({ setDisplayPopup, ...props }) {
   const islandRef = useRef();
+  const { rotation } = useContext(MenuContext);
   const { nodes, materials } = useGLTF(islandScene);
+
+  useEffect(() => {
+    islandRef.current.rotation.y = rotation - 0.1;
+  }, [rotation]);
 
   useFrame(() => {
     if (props.isRotating) {
-      islandRef.current.rotation.y -= 0.01;
+      islandRef.current.rotation.y -= Math.PI / 200;
 
       if (islandRef.current.rotation.y <= -Math.PI * 2) {
         islandRef.current.rotation.y = 0;

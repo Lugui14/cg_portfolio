@@ -9,8 +9,12 @@ import {
   MenuList,
   Text,
 } from "@chakra-ui/react";
+import { useContext } from "react";
+import { MenuContext } from "../contexts/MenuContext";
 
 const Navbar = () => {
+  const { handleSetRotation } = useContext(MenuContext);
+
   return (
     <HStack
       w={"100vw"}
@@ -49,10 +53,14 @@ const Navbar = () => {
           </Text>
         </MenuButton>
         <MenuList>
-          <MenuItem>Sobre</MenuItem>
-          <MenuItem>Projetos</MenuItem>
-          <MenuItem>Tecnologias</MenuItem>
-          <MenuItem>Fale Comigo</MenuItem>
+          <MenuItem onClick={handleSetRotation(0)}>Sobre</MenuItem>
+          <MenuItem onClick={handleSetRotation(-Math.PI / 2)}>
+            Projetos
+          </MenuItem>
+          <MenuItem onClick={handleSetRotation(-Math.PI)}>Tecnologias</MenuItem>
+          <MenuItem onClick={handleSetRotation((2 * Math.PI) / -3)}>
+            Fale Comigo
+          </MenuItem>
         </MenuList>
       </Menu>
     </HStack>

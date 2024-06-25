@@ -1,10 +1,9 @@
-import { Button } from "@chakra-ui/react";
+import { Button, Text } from "@chakra-ui/react";
 import Popup from "./Popup";
 
 const ContactPopup = () => {
   return (
     <Popup
-      title={"Contato"}
       position={"absolute"}
       top={"85%"}
       right={"50%"}
@@ -13,7 +12,20 @@ const ContactPopup = () => {
       justifyContent={"center"}
       alignItems={"center"}
     >
-      <Button>Contato</Button>
+      <Button
+        backgroundColor={"white"}
+        boxShadow={"0px 10px 23px -17px rgba(0,0,0,0.75)"}
+        p={6}
+        rounded={16}
+        w={48}
+        h={16}
+        border={'1px solid rgba(0,0,0,0.10)'}
+      >
+        {" "}
+        <Text fontSize={"xl"} fontWeight={"bold"} className="logo-text">
+          Fale Comigo!
+        </Text>
+      </Button>
     </Popup>
   );
 };

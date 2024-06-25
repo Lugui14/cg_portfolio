@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import Island from "./models/Island";
@@ -26,10 +26,6 @@ const popups = {
 const Home = () => {
   const [isRotating, setIsRotating] = useState(false);
   const [displayPopup, setDisplayPopup] = useState(null);
-
-  useEffect(() => {
-    console.log(displayPopup);
-  }, [displayPopup]);
 
   window.onkeydown = (e) => {
     if (e.key === "ArrowRight") {
@@ -76,6 +72,7 @@ const Home = () => {
             rotation={[0.1, 0, 0]}
             scale={[0.14, 0.11, 0.11]}
             isRotating={isRotating}
+            setIsRotating={setIsRotating}
             setDisplayPopup={setDisplayPopup}
           />
         </Suspense>
