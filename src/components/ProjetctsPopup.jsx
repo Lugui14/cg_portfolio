@@ -13,9 +13,10 @@ const ProjetctsPopup = () => {
     <Popup
       title={"Projetos"}
       position={"absolute"}
-      top={400}
-      left={120}
-      w={"30vw"}
+      top={{ base: "50%", md: 400 }}
+      left={{ base: "50%", md: 120 }}
+      w={{ base: "80vw", md: "30vw" }}
+      transform={{ base: "translate(50%, -50%)", md: "none" }}
     >
       <Accordion allowToggle={true}>
         <AccordionItem>

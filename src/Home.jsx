@@ -2,7 +2,7 @@ import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 
 import Island from "./models/Island";
-import { Html } from "@react-three/drei";
+import { Html, OrbitControls, Stats } from "@react-three/drei";
 import Sky from "./models/Sky";
 import Plane from "./models/Plane";
 import AboutPopup from "./components/AboutPopup";
@@ -62,18 +62,24 @@ const Home = () => {
 
           <Sky position={[-200, 0, 0]} isRotating={isRotating} />
           <Plane
-            position={[0, 0, -3]}
+            position={[0, 0, 0]}
             rotation={[0.3, Math.PI / 2.6, 0.3]}
-            scale={[1.4, 1.4, 1.4]}
+            scale={[0.8, 0.8, 0.8]}
             isRotating={isRotating}
           />
           <Island
-            position={[0, -35, -180]}
-            rotation={[0.1, 0, 0]}
-            scale={[0.14, 0.11, 0.11]}
+            position={[0, -2, -5]}
+            rotation={[0, Math.PI, 0]}
+            scale={[0.2, 0.2, 0.2]}
             isRotating={isRotating}
             setIsRotating={setIsRotating}
             setDisplayPopup={setDisplayPopup}
+          />
+          <OrbitControls
+            enableZoom={true}
+            enableRotate={true}
+            maxZoom={10}
+            minZoom={0.01}
           />
         </Suspense>
       </Canvas>

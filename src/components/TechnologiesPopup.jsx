@@ -8,6 +8,7 @@ import {
   PopoverContent,
   PopoverHeader,
   PopoverTrigger,
+  useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import Popup from "./Popup";
@@ -50,6 +51,8 @@ const TechnologiesPopup = () => {
   const [selectedTech, setSelectedTech] = useState(null);
   const { isOpen, onToggle, onClose } = useDisclosure();
 
+  const placement = useBreakpointValue({ base: "top", md: "left" });
+
   const handleMouseOver = (tech) => () => {
     setSelectedTech(tech);
     onToggle();
@@ -59,15 +62,16 @@ const TechnologiesPopup = () => {
     <Popover
       isOpen={isOpen}
       onClose={onClose}
-      placement="left"
+      placement={placement}
       closeOnBlur={false}
     >
       <Popup
         title={"Tecnologias"}
         position={"absolute"}
-        top={500}
-        right={120}
-        w={"30vw"}
+        top={{ base: "70%", md: 500 }}
+        right={{ base: "50%", md: 120 }}
+        w={{ base: "80vw", md: "30vw" }}
+        transform={{ base: "translate(50%, -50%)", md: "none" }}
       >
         <PopoverTrigger>
           <Grid templateColumns="repeat(3, 1fr)" gap={3}>
@@ -152,7 +156,11 @@ const TechnologiesPopup = () => {
           </Grid>
         </PopoverTrigger>
       </Popup>
-      <PopoverContent p={4} right={8} bottom={16}>
+      <PopoverContent
+        p={4}
+        right={{ base: 0, md: 8 }}
+        bottom={{ base: 24, md: 16 }}
+      >
         <PopoverHeader fontWeight={"semibold"}>
           {" "}
           {techs[selectedTech]?.title || ""}{" "}

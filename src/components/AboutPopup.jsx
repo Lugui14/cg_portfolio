@@ -5,9 +5,10 @@ const AboutPopup = () => {
     <Popup
       title={"Sobre"}
       position={"absolute"}
-      top={300}
-      right={120}
-      w={"30vw"}
+      top={{ base: "50%", md: 300 }}
+      right={{ base: "50%", md: 120 }}
+      w={{ base: "80vw", md: "30vw" }}
+      transform={{ base: "translate(50%, -50%)", md: "none" }}
     >
       <b>Olá, meu nome é Luiz Guilherme</b> <br /> <br /> Atualmente estou
       atualmente cursando Ciência da Computação da Universidade Federal da

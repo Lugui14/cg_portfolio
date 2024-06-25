@@ -21,9 +21,9 @@ const Plane = ({ isRotating, ...props }) => {
   useFrame(() => {
     if (isRotating) {
       if (rotationDir === "right") {
-        ref.current.rotation.z += 0.01;
+        ref.current.rotation.z += 0.005;
       } else {
-        ref.current.rotation.z -= 0.01;
+        ref.current.rotation.z -= 0.005;
       }
 
       if (ref.current.rotation.z >= 0.3) {

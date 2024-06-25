@@ -3,7 +3,7 @@ import { createContext, useState } from "react";
 export const MenuContext = createContext();
 
 const MenuContextProvider = ({ children }) => {
-  const [rotation, setRotation] = useState(0);
+  const [rotation, setRotation] = useState(Math.PI);
 
   const handleSetRotation = (y) => () => {
     setRotation(y);
